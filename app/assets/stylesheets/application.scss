@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+
+ label {
+   display: block;
+ }
+
+ .notice {
+  color: green;
+}
+
+.alert {
+  color: red;
+}
+
+#error_explanation > * {
+  color: red;
+}
