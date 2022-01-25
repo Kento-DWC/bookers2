@@ -1,0 +1,30 @@
+<div class="container">
+  <%= render "books/book_error" %>
+  <div class="row">
+    <%= render "layouts/leftmenu", user: @user %>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <% if @user.profile_image_id != nil %>
+                <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg' %>
+              <% else %>
+                <%= image_tag "no_image-72379a4da21cb04a58337cf92d85bc39f8d534cbc78254c2085acaca82236bfa.jpg", :size => "40x40" %>
+              <% end %>
+              <br>
+              <%= link_to @user.name, user_path(@user) %>
+            </td>
+            <td><%= link_to @book.title, book_path(@book) %></td>
+            <td><%= @book.body %></td>
+            <% if @book.user_id == current_user.id %>
+              <td><%= link_to "Edit", edit_book_path(@book), { class: "btn btn-sm btn-success" } %></td>
+              <td><%= link_to "Destroy", book_path(@book), { method: :delete, class: "btn btn-sm btn-danger", data: {confirm: "削除しますか？"} }%></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
